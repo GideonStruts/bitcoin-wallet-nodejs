@@ -5,12 +5,19 @@ const ecc = require("tiny-secp256k1");
 // Set network to testnet
 const network = bitcoin.networks.testnet;
 
-// Create a key pair
-const ECPair = ECPairFactory(ecc);
-const keypair = ECPair.makeRandom({ network });
+const myWalletAddress = "mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB";
 
-// Retrieve the public key
-const pubkey = keypair.publicKey;
+function createWallet() {
+  // Create a key pair
+  const ECPair = ECPairFactory(ecc);
+  const keypair = ECPair.makeRandom({ network });
 
-const addressObject = bitcoin.payments.p2pkh({ pubkey, network });
-console.log(addressObject.address);
+  // Retrieve the public key
+  const pubkey = keypair.publicKey;
+
+  const addressObject = bitcoin.payments.p2pkh({ pubkey, network });
+  console.log(addressObject.address);
+}
+
+// createWallet() - commented out because I already generated the wallet address.
+// mv4rnyY3Su5gjcDNzbMLKBQkBicCtHUtFB
